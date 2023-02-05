@@ -1,4 +1,4 @@
-// package br.com.wiseoffices;
+// package br.com.dbufalo;
 //
 // import io.quarkus.test.junit.QuarkusIntegrationTest;
 //

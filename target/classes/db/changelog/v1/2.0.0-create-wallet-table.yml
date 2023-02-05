@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-wallet-table
+      author: diegobufalo
+      changes:
+        - createTable:
+            tableName: wallet
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    references: user(id)
+                    foreignKeyName: fk_wallet_user_id
+                    nullable: false
+              - column:
+                  name: cash_value
+                  type: float
+        - createSequence:
+            sequenceName: wallet_sequence_id
+            incrementBy: 50

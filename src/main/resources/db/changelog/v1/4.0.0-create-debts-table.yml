@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-debt-table
+      author: diegobufalo
+      changes:
+        - createTable:
+            tableName: debt
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: card_id
+                  type: bigint
+                  constraints:
+                    references: card(id)
+                    foreignKeyName: fk_debt_card_id
+                    nullable: false
+              - column:
+                  name: amount
+                  type: float
+              - column:
+                  name: category
+                  type: varchar(20)
+              - column:
+                  name: date
+                  type: date
+              - column:
+                  name: total_of_installments
+                  type: int
+              - column:
+                  name: actual_installment
+                  type: int
+        - createSequence:
+            sequenceName: debt_sequence_id
+            incrementBy: 50

@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-authentication-user-table
+      author: diegobufalo
+      changes:
+        - createTable:
+            tableName: authentication_user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+        - createSequence:
+            sequenceName: authentication_user_sequence_id
+            incrementBy: 50

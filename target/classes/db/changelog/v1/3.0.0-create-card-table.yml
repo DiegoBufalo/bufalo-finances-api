@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-card-table
+      author: diegobufalo
+      changes:
+        - createTable:
+            tableName: card
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: checking_account_amount
+                  type: float
+              - column:
+                  name: wallet_id
+                  type: bigint
+                  constraints:
+                    references: wallet(id)
+                    foreignKeyName: fk_card_wallet_id
+                    nullable: false
+        - createSequence:
+            sequenceName: card_sequence_id
+            incrementBy: 50
